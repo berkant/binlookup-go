@@ -10,8 +10,9 @@ import (
 )
 
 const (
-	CorrectBIN   = "5288230"
-	IncorrectBIN = "0812436"
+	CorrectBIN          = "5288230"
+	CorrectButOrphanBIN = "9999999"
+	IncorrectBIN        = "0812436"
 )
 
 func TestSearchWithCorrectBIN(t *testing.T) {
@@ -39,5 +40,12 @@ func TestSearchWithIncorrectBIN(t *testing.T) {
 	_, err := Search(IncorrectBIN)
 	if err == nil {
 		t.Fatalf("%v is an incorrect BIN but Search returned nil error.", IncorrectBIN)
+	}
+}
+
+func TestSearchWithCorrectButOrphanBIN(t *testing.T) {
+	_, err := Search(CorrectButOrphanBIN)
+	if err == nil {
+		t.Fatalf("%v is an orphan BIN but Search returned nil for error.", CorrectButOrphanBIN)
 	}
 }
