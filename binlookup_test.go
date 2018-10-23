@@ -49,3 +49,11 @@ func TestSearchWithCorrectButOrphanBIN(t *testing.T) {
 		t.Fatalf("%v is an orphan BIN but Search returned nil for error.", CorrectButOrphanBIN)
 	}
 }
+
+func TestStatusCodeError(t *testing.T) {
+	ise := StatusCodeError(http.StatusInternalServerError)
+
+	if ise.Error() != "500 Internal Server Error" {
+		t.FailNow()
+	}
+}
