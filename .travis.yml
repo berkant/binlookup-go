@@ -1,3 +1,10 @@
 language: go
 go:
   - "1.x"
+
+env:
+  global:
+    - CODECOV_TOKEN="1747b2b6-d87b-4c8c-90b6-96ab125eb3ea"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
